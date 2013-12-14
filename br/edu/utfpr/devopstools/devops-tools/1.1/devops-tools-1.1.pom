@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>br.edu.utfpr.devopstools</groupId>
+    <artifactId>devops-tools</artifactId>
+    <version>1.1</version>
+
+    <scm>
+        <connection>scm:git:git@github.com:luanmalaguti/devops-tools.git</connection>
+        <url>scm:git:git@github.com:luanmalaguti/devops-tools.git</url>
+        <developerConnection>scm:git:git@github.com:luanmalaguti/devops-tools.git</developerConnection>
+    <tag>devops-tools-1.1</tag>
+  </scm>
+
+    <properties>
+        <!-- github server corresponds to entry in ~/.m2/settings.xml -->
+        <github.global.server>github</github.global.server>
+    </properties>
+
+    <developers>
+        <developer>
+            <id>luanmalaguti</id>
+            <name>Luan Malaguti</name>
+            <email>luanmalaguti.gmail.com</email>
+            <url>https://github.com/luanmalaguti</url>
+        </developer>
+    </developers>
+
+    <distributionManagement>
+
+        <repository>
+            <id>internal.repo</id>
+            <name>Temporary Staging Repository</name>
+            <url>file://${project.build.directory}/releases</url>
+        </repository>
+
+        <snapshotRepository>
+            <id>internal.snapshot.repo</id>
+            <name>Temorary Snapshot Repository</name>
+            <url>file://${project.build.directory}/snapshots</url>
+        </snapshotRepository>
+
+    </distributionManagement>
+
+    <dependencies>
+
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.11</version>
+        </dependency>
+
+    </dependencies>
+
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.1</version>
+                <configuration>
+                    <source>1.7</source>
+                    <target>1.7</target>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-release-plugin</artifactId>
+                <version>2.4.2</version>
+            </plugin>
+
+            <plugin>
+
+                <groupId>com.github.github</groupId>
+
+                <artifactId>downloads-maven-plugin</artifactId>
+
+                <version>0.5</version>
+
+                <configuration>
+
+                    <description>${project.version} release of ${project.name}
+
+                    </description>
+
+                    <override>true</override>
+
+                    <includeAttached>true</includeAttached>
+
+                </configuration>
+
+            </plugin>
+
+            <plugin>
+                <groupId>com.github.github</groupId>
+                <artifactId>site-maven-plugin</artifactId>
+                <version>0.9</version>
+
+                <configuration>
+                    <message>Maven artifacts for ${project.version}</message>  <!-- git commit message -->
+                    <noJekyll>true</noJekyll>                                  <!-- disable webpage processing -->
+                    <outputDirectory>${project.build.directory}/releases</outputDirectory> <!-- matches distribution management repository url above -->
+                    <branch>refs/heads/releases</branch>                       <!-- remote branch name -->
+                    <includes><include>**/*</include></includes>
+
+                    <repositoryName>devops-tools</repositoryName>      <!-- github repo name -->
+                    <repositoryOwner>luanmalaguti</repositoryOwner>    <!-- github username  -->
+                </configuration>
+
+                <executions>
+                    <!-- run site-maven-plugin's 'site' target as part of the build's normal 'deploy' phase -->
+                    <execution>
+                        <goals>
+                            <goal>site</goal>
+                        </goals>
+                        <phase>deploy</phase>
+                    </execution>
+
+                </executions>
+            </plugin>
+
+        </plugins>
+
+
+    </build>
+
+</project>
+
