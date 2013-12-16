@@ -18,7 +18,7 @@ public class UserDaoTest {
         dao = new AbstractDAO<User>(User.class);
     }
 
-    @Test @Ignore
+    @Test
     public void save(){
         user = dao.save(new User("Luan","luanmaladguti@gmail.com","12345"));
         Assert.assertNotNull(user.getId());
