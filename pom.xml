@@ -31,7 +31,7 @@
         <!-- Repositorio temporario dos arquivos do site (javadoc)-->
         <site>
             <id>Java Doc</id>
-            <url>file:///home/luan/site</url>
+            <url>file://${project.build.directory}/releases/site</url>
         </site>
     </distributionManagement>
 
@@ -133,5 +133,5 @@
 
     </build>
 
-</project
+</project>
 
