@@ -19,7 +19,7 @@ public class UserDaoTest{
 
     @Test
     public void save(){
-        //user = dao.save(new User("Fulano","Fulano@gmail.com","12345"));
+        user = dao.save(new User("Fulano","Fulano@gmail.com","12345"));
         Assert.assertNotNull(user.getId());
     }
 
