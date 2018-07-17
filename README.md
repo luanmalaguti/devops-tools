@@ -1,5 +1,4 @@
 # devops-tools
-============
 
 Develop and deliver software quickly while maintaining quality is a challenge for companies that wish to maintain their functional products at a sustainable pace. The DevOps culture emerged as one based on innovative practices used in development and operations teams using automation tools to deliver changes to systems at the pace that the business solution needs. 
 
